@@ -1,6 +1,6 @@
 import csv
-from pythonAssessment2 import database
-import client_details
+import database
+import  clients
 
 class Banking_Application:
 
@@ -9,9 +9,11 @@ class Banking_Application:
             reader = csv.reader(x)
             for i in reader:
                 print(i)
+
 bank = Banking_Application()
 
-reader = client_details.reader(x)
-for i in reader:
-    print(i)
+client1= clients.client_details('Ms', 'Skyler', 'Harrinson', 'they', '2/23/1960', 'Research and Development', '5945', '100')
+print(client1.first_name)
+
+
 

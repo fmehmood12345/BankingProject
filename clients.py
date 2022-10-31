@@ -17,10 +17,6 @@ class client_details:
         def order(self):
             return (f"{self.title},{self.first_name},{self.last_name},{self.preferred_pronoun},{self.date_of_birth},{self.occupation},{self.account_balance},{self.overdraft_limit}")
 
-#main
-if __file__=="__main__":
-    #creating an object of the class client_details
-    client1= client_details('Ms', 'Skyler', 'Harrinson', 'they', '2/23/1960', 'Research and Development', '59', '5')
+        def __str__(self):
+            return (f"{self.title},{self.first_name},{self.last_name},{self.preferred_pronoun},{self.date_of_birth},{self.occupation},{self.account_balance},{self.overdraft_limit}")
 
-    #order details according to the method provided
-    print(client1.order())
