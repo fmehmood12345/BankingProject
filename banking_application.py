@@ -10,10 +10,20 @@ class Banking_Application:
             for i in reader:
                 print(i)
 
-bank = Banking_Application()
 
-client1= clients.client_details('Ms', 'Skyler', 'Harrinson', 'they', '2/23/1960', 'Research and Development', '5945', '100')
-print(client1.first_name)
+
+
+
+filename = 'clients_details.csv'
+with open(filename, 'a') as file_object:
+    client1 = clients.client_details('Ms', 'Skyler', 'Harrinson', 'they', '2/23/1960', 'Research and Development',
+                                     '4562', '100')
+    file_object.write(client1.__str__())
+
+with open('database/clients_details.csv') as file_object:
+    content = file_object.read()
+print(content)
+
 
 
 

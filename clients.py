@@ -13,10 +13,16 @@ class client_details:
         self.account_balance = account_balance
         self.overdraft_limit = overdraft_limit
 
-        #method explaining how data should be ordered
-        def order(self):
-            return (f"{self.title},{self.first_name},{self.last_name},{self.preferred_pronoun},{self.date_of_birth},{self.occupation},{self.account_balance},{self.overdraft_limit}")
 
-        def __str__(self):
-            return (f"{self.title},{self.first_name},{self.last_name},{self.preferred_pronoun},{self.date_of_birth},{self.occupation},{self.account_balance},{self.overdraft_limit}")
+    #method explaining how data should be ordered
+    def order(self):
+        return (
+            f"{self.title},{self.first_name},{self.last_name},{self.preferred_pronouns},{self.date_of_birth},{self.occupation},{self.account_balance},{self.overdraft_limit}")
 
+    def __str__(self):
+        return (
+            f'{self.title},{self.first_name},{self.last_name},{self.preferred_pronouns},{self.date_of_birth},{self.occupation},{self.account_balance},{self.overdraft_limit}')
+
+    def __repr__(self):
+        return (
+            f"{self.title},{self.first_name},{self.last_name},{self.preferred_pronouns},{self.date_of_birth},{self.occupation},{self.account_balance},{self.overdraft_limit}")
