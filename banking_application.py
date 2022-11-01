@@ -12,9 +12,6 @@ class Banking_Application:
             for i in reader:
                 print(i)
 
-
-
-
 #Adding Clients: appending client details to csv file
 filename = 'database/clients_details.csv'
 
@@ -29,11 +26,6 @@ filename = 'database/clients_details.csv'
 #
 # file_object.close()
 
-#Proof of Adding Clients
-with open('database/clients_details.csv') as file_object:
-    content = file_object.read()
-print(content)
-
 #Deleting Clients from CSV file
 lines = list()
 client_name = input("Enter the firstname of the client you want to delete")
@@ -44,10 +36,18 @@ with open(filename, 'r') as readFile:
         for field in row:
             if field == client_name:
                 lines.remove(row)
+
+
+                for i in lines:
+                    print(i)
+
 with open(filename, 'w') as writeFile:
     writer = csv.writer(writeFile)
     writer.writerows(lines)
 
-
+#Printing entire CSV file
+with open('database/clients_details.csv') as file_object:
+    content = file_object.read()
+print(content)
 
 
