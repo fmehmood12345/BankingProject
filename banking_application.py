@@ -2,6 +2,7 @@ import csv
 import database
 import  clients
 
+#class for banking application
 class Banking_Application:
 
     def __init__(self):
@@ -13,7 +14,7 @@ class Banking_Application:
 
 
 
-
+#appending client details to csv file
 filename = 'clients_details.csv'
 with open(filename, 'a') as file_object:
     client1 = clients.client_details('Ms', 'Skyler', 'Harrinson', 'they', '2/23/1960', 'Research and Development',
