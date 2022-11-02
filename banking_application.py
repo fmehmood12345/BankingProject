@@ -46,6 +46,6 @@ with open(filename, 'r') as readFile:
 with open(filename, 'w') as writeFile:
     writer = csv.writer(writeFile)
     writer.writerows(lines)
-
+# print(lines)
 
 
