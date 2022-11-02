@@ -26,3 +26,4 @@ class client_details:
     def __repr__(self):
         return (
             f"{self.title},{self.first_name},{self.last_name},{self.preferred_pronouns},{self.date_of_birth},{self.occupation},{self.account_balance},{self.overdraft_limit}")
+
