@@ -26,7 +26,11 @@ class client_details:
         return (
             f"{self.title},{self.first_name},{self.last_name},{self.preferred_pronouns},{self.date_of_birth},{self.occupation},{self.account_balance},{self.overdraft_limit}")
 
-    def changing_title(self,title, first_name, last_name):
+    def changing_account_balance(self,new_account_balance):
+        old_account_balance = self.account_balance
+        new_balance =  int(new_account_balance) + int(old_account_balance)
+        return  new_balance
+
 
 client = {
         "title": "Mr",
@@ -38,5 +42,9 @@ client = {
         "account_balance": "158972",
         "overdraft_limit": "1000"
     }
+#Adding client into the attributes in client_details class
 c = client_details(**client)
-print(c)
+
+c.account_balance=(c.changing_account_balance(new_account_balance=100))
+print(c.account_balance)
+
