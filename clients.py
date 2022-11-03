@@ -34,11 +34,33 @@ class client_details:
     def removing_in_account_balance(self,removing_balance):
         old_account_balance = self.account_balance
         new_balance =  int(old_account_balance)-int(removing_balance)
-        if removing_balance > int(self.overdraft_limit):
-            new_balance = int(old_account_balance) - (int(removing_balance)+5)
+        if removing_balance > (int(old_account_balance)+ int(self.overdraft_limit)):
+            new_balance = -5 # HAVE TO CHECK
         return new_balance
 
-    def
+    def changing_title(self,new_title):
+        old_title = self.title
+        updated_title=new_title
+        return updated_title
+
+    def changing_first_name(self,new_first_name):
+        old_first_name = self.first_name
+        updated_first_name = new_first_name
+        return updated_first_name
+    def changing_last_name(self,new_last_name):
+        old_last_name = self.last_name
+        updated_last_name = new_last_name
+        return updated_last_name
+
+    def changing_preferred_pronoun(self,new_preferred_pronoun):
+        old_preferred_pronoun = self.preferred_pronouns
+        updated_preferred_pronoun = new_preferred_pronoun
+        return updated_preferred_pronoun
+
+    def changing_occupation(self,new_occupation):
+        old_occupation = self.occupation
+        updated_occupation = new_occupation
+        return updated_occupation
 
 client = {
         "title": "Mr",
@@ -53,10 +75,33 @@ client = {
 #Adding client into the attributes in client_details class
 c = client_details(**client)
 
+#Client before changes made
+print(c)
+
 #Adding balance
 c.account_balance=(c.adding_in_account_balance(add_balance=100))
 print(c.account_balance)
 
 #removing balance
-c.account_balance=(c.removing_in_account_balance(removing_balance=11))
+c.account_balance=(c.removing_in_account_balance(removing_balance=1100))
 print(c.account_balance)
+
+#changing the title
+c.title=(c.changing_title("Mrs"))
+print(c.title)
+
+#changing the firstname
+c.first_name=(c.changing_first_name("Sarah"))
+print(c.first_name)
+
+c.last_name=(c.changing_last_name("Dott"))
+print(c.last_name)
+
+c.preferred_pronouns=(c.changing_preferred_pronoun("she/her"))
+print(c.preferred_pronouns)
+
+c.occupation=(c.changing_occupation("Teacher"))
+print(c.occupation)
+
+#Check to see if the dictionary is actually updated
+print(c)
