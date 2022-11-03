@@ -26,11 +26,19 @@ class client_details:
         return (
             f"{self.title},{self.first_name},{self.last_name},{self.preferred_pronouns},{self.date_of_birth},{self.occupation},{self.account_balance},{self.overdraft_limit}")
 
-    def changing_account_balance(self,new_account_balance):
+    def adding_in_account_balance(self,add_balance):
         old_account_balance = self.account_balance
-        new_balance =  int(new_account_balance) + int(old_account_balance)
+        new_balance =  int(add_balance) + int(old_account_balance)
         return  new_balance
 
+    def removing_in_account_balance(self,removing_balance):
+        old_account_balance = self.account_balance
+        new_balance =  int(old_account_balance)-int(removing_balance)
+        if removing_balance > int(self.overdraft_limit):
+            new_balance = int(old_account_balance) - (int(removing_balance)+5)
+        return new_balance
+
+    def
 
 client = {
         "title": "Mr",
@@ -39,12 +47,16 @@ client = {
         "preferred_pronouns": "he/him",
         "date_of_birth": "15/12/1990",
         "occupation": "Software Engineer",
-        "account_balance": "158972",
-        "overdraft_limit": "1000"
+        "account_balance": "100",
+        "overdraft_limit": "10"
     }
 #Adding client into the attributes in client_details class
 c = client_details(**client)
 
-c.account_balance=(c.changing_account_balance(new_account_balance=100))
+#Adding balance
+c.account_balance=(c.adding_in_account_balance(add_balance=100))
 print(c.account_balance)
 
+#removing balance
+c.account_balance=(c.removing_in_account_balance(removing_balance=11))
+print(c.account_balance)
