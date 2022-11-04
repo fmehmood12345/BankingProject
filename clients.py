@@ -35,7 +35,7 @@ class client_details:
         old_account_balance = self.account_balance
         new_balance =  int(old_account_balance)-int(removing_balance)
         if removing_balance > (int(old_account_balance)+ int(self.overdraft_limit)):
-            new_balance = -5 # HAVE TO CHECK
+            new_balance = 0- (removing_balance + 5) # HAVE TO CHECK
         return new_balance
 
     def changing_title(self,new_title):
@@ -78,9 +78,9 @@ c = client_details(**client)
 #Client before changes made
 print(c)
 
-#Adding balance
-c.account_balance=(c.adding_in_account_balance(add_balance=100))
-print(c.account_balance)
+# #Adding balance
+# c.account_balance=(c.adding_in_account_balance(add_balance=100))
+# print(c.account_balance)
 
 #removing balance
 c.account_balance=(c.removing_in_account_balance(removing_balance=1100))
