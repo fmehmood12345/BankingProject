@@ -78,7 +78,7 @@ c.changing_last_name("Kim")
 c.changing_title("Miss")
 c.changing_occupation("Doctor")
 c.changing_first_name("Sarah")
-c.removing_in_account_balance(200)
+c.removing_in_account_balance(120)
 #Clients after changes made
 print(c)
 
