@@ -13,11 +13,6 @@ class client_details:
         self.account_balance = account_balance
         self.overdraft_limit = overdraft_limit
 
-    # #method explaining how data should be ordered
-    # def order(self):
-    #     return (
-    #         f"{self.title},{self.first_name},{self.last_name},{self.preferred_pronouns},{self.date_of_birth},{self.occupation},{self.account_balance},{self.overdraft_limit}")
-    #
     def __str__(self):
          return (
              f'Title: {self.title}\n'
@@ -39,11 +34,10 @@ class client_details:
 
 
     def removing_in_account_balance(self,removing_balance):
-        new_balance =  int(self.account_balance)-int(removing_balance)
-        self.account_balance = new_balance
-        if removing_balance > (int(old_account_balance)+ int(self.overdraft_limit)):
-            new_balance = 0- (removing_balance + 5) # HAVE TO CHECK
-            self.account_balance = new_balance
+        if removing_balance > (self.account_balance + self.overdraft_limit):
+            self.account_balance = (self.account_balance + self.overdraft_limit) - (removing_balance + 5)
+        else:
+            self.account_balance = (self.account_balance - removing_balance)
 
     def changing_title(self,new_title):
         self.title = new_title
@@ -65,10 +59,10 @@ client = {
         "first_name" : "Mike",
         "last_name": "Smith",
         "preferred_pronouns": "he/him",
-        "date_of_birth": "15/12/1990",
+        "date_of_birth": "15/12/1990", #chnage this to dob format
         "occupation": "Software Engineer",
-        "account_balance": "100",
-        "overdraft_limit": "10"
+        "account_balance": 100,
+        "overdraft_limit": 10
     }
 #Adding client into the attributes in client_details class
 c = client_details(**client)
@@ -78,13 +72,13 @@ print(c)
 
 print(" ")
 
-#Changes made to clients
+#Changes made to clients by calling the functions
 c.changing_preferred_pronoun("she/her")
 c.changing_last_name("Kim")
 c.changing_title("Miss")
 c.changing_occupation("Doctor")
 c.changing_first_name("Sarah")
-
+c.removing_in_account_balance(200)
 #Clients after changes made
 print(c)
 
