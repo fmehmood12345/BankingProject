@@ -13,6 +13,6 @@ class CSV:
         pd.to_csv("new_client")
 
         '''new_client we will get from the banking application class - to make a new client we will add all its information into this variable and
-        pass it as an argument'''
+        pass it as an argument.'''
 
 CSV.dictionary_of_csv_file()
