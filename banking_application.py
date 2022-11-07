@@ -1,7 +1,11 @@
-import csv
-import database
-import  clients
-from csv import writer
+from clients import *
+from CSV import *
+
+
+#print(client)
+csv.dictionary_of_csv_file(df)
+
+
 #class for banking application
 # class Banking_Application:
 #     def __init__(self):

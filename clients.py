@@ -59,7 +59,7 @@ client = {
         "first_name" : "Mike",
         "last_name": "Smith",
         "preferred_pronouns": "he/him",
-        "date_of_birth": "15/12/1990", #chnage this to dob format
+        "date_of_birth": "15/12/1990",
         "occupation": "Software Engineer",
         "account_balance": 100,
         "overdraft_limit": 10
