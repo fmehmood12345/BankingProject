@@ -3,7 +3,14 @@ from CSV import *
 
 
 #print(client)
-csv.dictionary_of_csv_file(df)
+df = pd.read_csv('./database/clients_details.csv')
+print(csv.add_to_dataframe(df,client))
+(csv.dictionary_of_csv_file(df))
+
+df = pd.DataFrame(client)
+
+df.to_csv('./database/clients_details.csv', mode='a', index=False, header=False)
+
 
 
 #class for banking application

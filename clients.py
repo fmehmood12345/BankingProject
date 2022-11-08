@@ -55,30 +55,30 @@ class client_details:
 
 #One Client
 client = {
-        "title": "Mr",
-        "first_name" : "Mike",
-        "last_name": "Smith",
-        "preferred_pronouns": "he/him",
-        "date_of_birth": "15/12/1990",
-        "occupation": "Software Engineer",
-        "account_balance": 100,
-        "overdraft_limit": 10
+        "title": ['Mr'],
+        "first_name" : ['Mike'],
+        "last_name": ['Smith'],
+        "preferred_pronouns": ['he/him'],
+        "date_of_birth": ['15/12/1990'],
+        "occupation": ['Software Engineer'],
+        "account_balance": [100],
+        "overdraft_limit": [10]
     }
 #Adding client into the attributes in client_details class
 c = client_details(**client)
 
 #Client before changes made
-print(c)
-
-print(" ")
-
-#Changes made to clients by calling the functions
-c.changing_preferred_pronoun("she/her")
-c.changing_last_name("Kim")
-c.changing_title("Miss")
-c.changing_occupation("Doctor")
-c.changing_first_name("Sarah")
-c.removing_in_account_balance(120)
-#Clients after changes made
-print(c)
+# print(c)
+#
+# print(" ")
+#
+# #Changes made to clients by calling the functions
+# c.changing_preferred_pronoun("she/her")
+# c.changing_last_name("Kim")
+# c.changing_title("Miss")
+# c.changing_occupation("Doctor")
+# c.changing_first_name("Sarah")
+# c.removing_in_account_balance(120)
+# #Clients after changes made
+# print(c)
 
