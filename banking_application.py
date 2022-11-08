@@ -1,15 +1,14 @@
 from clients import *
 from CSV import *
 
-
-#print(client)
+#reading from the csv file and putting it into a df format
 df = pd.read_csv('./database/clients_details.csv')
-print(csv.add_to_dataframe(df,client))
-(csv.dictionary_of_csv_file(df))
+#adding client to csv file
+csv.add_to_csv_file(client)
+#printing the csv file
+print(csv.dictionary_of_csv_file())
 
-df = pd.DataFrame(client)
 
-df.to_csv('./database/clients_details.csv', mode='a', index=False, header=False)
 
 
 
