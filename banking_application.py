@@ -1,63 +1,49 @@
 from clients import *
 from CSV import *
+import datetime
+'''What to have in the banking application class:
+            -retrieveing a client by searching first and last name and DoB
+            -Change overdraft limits once you have retrieved a client
+            -Add and Delete clients
+            -Search by negative balance
+            -move money from one account to another    '''
 
-#reading from the csv file and putting it into a df format
-df = pd.read_csv('./database/clients_details.csv')
-#adding client to csv file
-csv.add_to_csv_file(client)
-#printing the csv file
-print(csv.dictionary_of_csv_file())
+class Banking_Application:
+
+    def __fetch_csv_dataframe(self):
+        csv_class_obj = csv()
+        dataframe = csv.dictionary_of_csv_file()
+        return dataframe
+    def retrieving_a_client(self, first_name,last_name,date_of_birth):
+        dataframe = self.__fetch_csv_dataframe()
+        df = dataframe[(dataframe["Firstname"] == first_name) & (dataframe["Lastname"] == last_name) & (dataframe["Date of Birth"] == date_of_birth)]
+        return df.to_string()
+    def accounts_with_negative_balance(self):
+        dataframe = self.__fetch_csv_dataframe()
+        df = dataframe[dataframe["Account Balance"] < 0]
+        return (df.to_string())
+    def deleting_a_client():
+        return None
+    def changing_overdraft_limits():
+        return None
+    def moving_money():
+        return None
 
 
 
+BA_Obj = Banking_Application()
 
+print(BA_Obj.retrieving_a_client("Skyler","Harrison", "2/23/1960"))
 
-#class for banking application
-# class Banking_Application:
-#     def __init__(self):
-#         with open("database/clients_details.csv","r") as x:
-#             reader = csv.reader(x)
-#             for i in reader:
-#                 print(i)
+# #printing all accounts with negative balance
+# print(Banking_Application.accounts_with_negative_balance(df))
 #
-# filename = 'database/clients_details.csv'
 #
-# #Adding Clients: appending client details to csv file
-# with open(filename, 'a',newline='') as file_object:
-#     writer_object = writer(file_object)
-#     client1 = clients.client_details('Ms', 'Skyler', 'Harrinson', 'they', '2/23/1960', 'Research and Development',
-#                                      '4562', '100')
-#     client1_list = []
-#     for value in client1.__str__().split(','):
-#         client1_list.append(value)
-#     writer_object.writerow(client1_list)
+# #adding client to csv file
+# csv.add_to_csv_file(client)
 #
-# file_object.close()
+# #printing the csv file
+# print(csv.dictionary_of_csv_file())
 #
-# #Proof of Adding Clients
-# with open(filename) as file_object:
-#      content = file_object.read()
-# print(content)
 #
-# #Deleting Cliets from CSV file
-# lines = list()
-# client_name = input("Enter the firstname of the client you want to delete ")
-# with open(filename, 'r') as readFile:
-#     reader = csv.reader(readFile)
-#     for row in reader:
-#         lines.append(row)
-#         for field in row:
-#             if field == client_name:
-#                 lines.remove(row)
-#     for i in lines:
-#         print(i)
-#
-# #Writing the CSV file into a list
-# with open(filename, 'w') as writeFile:
-#     writer = csv.writer(writeFile)
-#     writer.writerows(lines)
-# # print(lines)
-#
-
-
 
