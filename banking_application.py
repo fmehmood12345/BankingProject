@@ -13,11 +13,11 @@ from constants import *
 
 class Banking_Application:
 
-    def __init(self):
-        self.csv_object= csv()
+    def __init__(self):
+        self.csv_class_obj= csv()
 
     def __fetch_csv_dataframe(self):
-        dataframe = self.csv_object.dataframe_of_csv_file()
+        dataframe = csv_class_obj.dataframe_of_csv_file()
         return dataframe
 
     def __return_client_df_as_dict(self, dataframe_input):
@@ -52,35 +52,48 @@ class Banking_Application:
     def deleting_a_client(self,first_name, last_name, date_of_birth):
         dataframe = self.__fetch_csv_dataframe()
         dataframe.drop(dataframe[(dataframe["Firstname"] == first_name) & (dataframe["Lastname"] == last_name) & (dataframe["Date of Birth"] == date_of_birth)].index, inplace=True)
-        self.csv_object.refresh_csv_file(dataframe)
+        self.csv_class_obj.refresh_csv_file(dataframe)
 
     def changing_overdraft_limits(self,first_name, last_name, date_of_birth, new_overdraft_limit):
         dataframe = self.__fetch_csv_dataframe()
-        df = dataframe[(dataframe["Firstname"] == first_name) & (dataframe["Lastname"] == last_name) & (dataframe["Date of Birth"] == date_of_birth)]
-        dataframe.loc[df,'Overdraft Limit'] = new_overdraft_limit
+        for index, row in dataframe.iterrows():
+            if row['Firstname'] == first_name and row['Lastname'] == last_name and row['Date of Birth'] == date_of_birth:
+                dataframe.at[index, 'Overdraft Limit'] = new_overdraft_limit
+        self.csv_class_obj.refresh_csv_file(dataframe)
 
+    def print_current_CSV_file(self):
+        print(self.__fetch_csv_dataframe().to_string())
 
-    def moving_money_between_clients(self,first_name, last_name, date_of_birth):
+    def adding_a_client(self,title,first_name,last_name,pronouns,DoB,occupation,account_balance, overdraft_limit):
         dataframe = self.__fetch_csv_dataframe()
-        df = dataframe[(dataframe["Firstname"] == first_name) & (dataframe["Lastname"] == last_name) & (dataframe["Date of Birth"] == date_of_birth)]
+        self.csv_class_obj.refresh_csv_file(dataframe)
 
-
-
-
+#Objects of each class
 BA_Obj = Banking_Application()
+csv_obj = csv()
+client_obj = client_class()
 
-retrieved_client_obj = BA_Obj.retrieving_a_client("Skyler","Harrinson", "2/23/1960")
-#print(retrieved_client_obj)
 
-#BA_Obj.deleting_a_client("Wilma","Huniwall","4/14/2000")
 
-BA_Obj.changing_overdraft_limits("Skyler","Harrinson", "2/23/1960",1000)
-# #printing all accounts with negative balance
-#print(BA_Obj.accounts_with_negative_balance())
+
+
+
+# retrieved_client_obj = BA_Obj.retrieving_a_client("Skyler","Harrinson", "2/23/1960")
+# print(retrieved_client_obj)
+
+#BA_Obj.deleting_a_client("Wilma","Huniwall","4/14/2000"
+# BA_Obj.changing_overdraft_limits("Skyler","Harrinson", "2/23/1960",1000)
+# BA_Obj.print_current_CSV_file()
+
+
+#printing all accounts with negative balance
+# print(BA_Obj.accounts_with_negative_balance())
 
 
 # #printing the csv file
-# print(csv.dictionary_of_csv_file())
+
+print(csv_obj.add_to_csv_file(c))
 #
 #
 
+# csv.add_to_csv_file(c)

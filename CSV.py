@@ -12,14 +12,8 @@ class csv:
         return dataframe
 
     def refresh_csv_file(self, new_df):
-        current_df = pd.read_csv(CSV_FILE_PATH)
-        current_df = new_df
-        current_df.to_csv(CSV_FILE_PATH)
-
-
-    def add_to_csv_file(self, client):
-        df = pd.DataFrame(client)
-        df.to_csv(CSV_FILE_PATH, mode='a', index=False, header=False)
+        with open(CSV_FILE_PATH, 'w') as my_new_csv_file:
+            new_df.to_csv(CSV_FILE_PATH, mode="w", index="False")
+            my_new_csv_file.close()
 
 csv_class_obj = csv()
-
