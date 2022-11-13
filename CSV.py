@@ -6,7 +6,7 @@ import pandas as pd
 
 class csv:
 
-    def dictionary_of_csv_file():
+    def dictionary_of_csv_file(self):
         dataframe = pd.read_csv('./database/clients_details.csv')
         return dataframe
 
@@ -39,4 +39,4 @@ class csv:
         df = pd.DataFrame(client)
         df.to_csv('./database/clients_details.csv', mode='a', index=False, header=False)
 
-csv_Obj = csv()
+csv_class_obj = csv()
