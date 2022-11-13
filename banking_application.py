@@ -2,6 +2,7 @@ from clients import *
 from CSV import *
 import datetime
 import pandas as pd
+from constants import *
 
 '''What to have in the banking application class:
             -retrieving a client by searching first and last name and DoB
@@ -12,9 +13,11 @@ import pandas as pd
 
 class Banking_Application:
 
+    def __init(self):
+        self.csv_object= csv()
+
     def __fetch_csv_dataframe(self):
-        csv_class_obj = csv()
-        dataframe = csv_class_obj.dictionary_of_csv_file()
+        dataframe = self.csv_object.dataframe_of_csv_file()
         return dataframe
 
     def __return_client_df_as_dict(self, dataframe_input):
@@ -48,15 +51,19 @@ class Banking_Application:
 
     def deleting_a_client(self,first_name, last_name, date_of_birth):
         dataframe = self.__fetch_csv_dataframe()
-        dataframe.drop(dataframe.index[(dataframe["Firstname"] == first_name)],axis=0,inplace=True)
-        return dataframe.to_string()
+        dataframe.drop(dataframe[(dataframe["Firstname"] == first_name) & (dataframe["Lastname"] == last_name) & (dataframe["Date of Birth"] == date_of_birth)].index, inplace=True)
+        self.csv_object.refresh_csv_file(dataframe)
 
-    # def changing_overdraft_limits():
-    #     return None
+    def changing_overdraft_limits(self,first_name, last_name, date_of_birth, new_overdraft_limit):
+        dataframe = self.__fetch_csv_dataframe()
+        df = dataframe[(dataframe["Firstname"] == first_name) & (dataframe["Lastname"] == last_name) & (dataframe["Date of Birth"] == date_of_birth)]
+        dataframe.loc[df,'Overdraft Limit'] = new_overdraft_limit
 
 
-    # def moving_money_between_clients():
-    #     return None
+    def moving_money_between_clients(self,first_name, last_name, date_of_birth):
+        dataframe = self.__fetch_csv_dataframe()
+        df = dataframe[(dataframe["Firstname"] == first_name) & (dataframe["Lastname"] == last_name) & (dataframe["Date of Birth"] == date_of_birth)]
+
 
 
 
@@ -65,8 +72,9 @@ BA_Obj = Banking_Application()
 retrieved_client_obj = BA_Obj.retrieving_a_client("Skyler","Harrinson", "2/23/1960")
 #print(retrieved_client_obj)
 
-deleting_a_client_obj = BA_Obj.deleting_a_client("Lorant","Sphinxe","1/29/1971")
+#BA_Obj.deleting_a_client("Wilma","Huniwall","4/14/2000")
 
+BA_Obj.changing_overdraft_limits("Skyler","Harrinson", "2/23/1960",1000)
 # #printing all accounts with negative balance
 #print(BA_Obj.accounts_with_negative_balance())
 
