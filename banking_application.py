@@ -66,34 +66,32 @@ class Banking_Application:
 
     def adding_a_client(self,title,first_name,last_name,pronouns,DoB,occupation,account_balance, overdraft_limit):
         dataframe = self.__fetch_csv_dataframe()
-        self.csv_class_obj.refresh_csv_file(dataframe)
+        new_dataframe = dataframe.append({'Title':title,
+                                          'Firstname':first_name,
+                                          'Lastname':last_name,
+                                          'Pronouns': pronouns,
+                                          'Date of Birth': DoB,
+                                          'Occupation':occupation,
+                                          'Account Balance': account_balance,
+                                          'Overdraft Limit': overdraft_limit
+                                          })
+        self.csv_class_obj.refresh_csv_file(new_dataframe)
 
 #Objects of each class
 BA_Obj = Banking_Application()
 csv_obj = csv()
-client_obj = client_class()
+
+client_obj = client_class('Mr','Mike','Smith','he/him','15/12/1990','Software Engineer',100, 10)
+
+#BA_Obj.adding_a_client('Mr','Mike','Smith','he/him','15/12/1990','Software Engineer',100, 10)
 
 
+#client_obj('Mr','Mike','Smith','he/him','15/12/1990','Software Engineer',100, 10)
 
+#print(BA_Obj.retrieving_a_client("Wilma","Huniwall","4/14/2000"))
 
+#print(BA_Obj.accounts_with_negative_balance())
 
+#BA_Obj.changing_overdraft_limits("Skyler","Harrinson", "2/23/1960",100)
 
-# retrieved_client_obj = BA_Obj.retrieving_a_client("Skyler","Harrinson", "2/23/1960")
-# print(retrieved_client_obj)
-
-#BA_Obj.deleting_a_client("Wilma","Huniwall","4/14/2000"
-# BA_Obj.changing_overdraft_limits("Skyler","Harrinson", "2/23/1960",1000)
-# BA_Obj.print_current_CSV_file()
-
-
-#printing all accounts with negative balance
-# print(BA_Obj.accounts_with_negative_balance())
-
-
-# #printing the csv file
-
-print(csv_obj.add_to_csv_file(c))
-#
-#
-
-# csv.add_to_csv_file(c)
+#BA_Obj.print_current_CSV_file()

@@ -1,6 +1,5 @@
-#Class for client_details
-class client_class:
 
+class client_class:
     #constructor
     def __init__(self,title,first_name,last_name,preferred_pronouns,date_of_birth,occupation,account_balance,overdraft_limit):
         #instance variables
@@ -46,39 +45,11 @@ class client_class:
         self.first_name = new_first_name
     def changing_last_name(self,new_last_name):
         self.last_name = new_last_name
-
     def changing_preferred_pronoun(self,new_preferred_pronoun):
         self.preferred_pronouns=new_preferred_pronoun
 
     def changing_occupation(self,new_occupation):
         self.occupation = new_occupation
 
-#One Client
-client = {
-        "title": 'Mr',
-        "first_name": 'Mike',
-        "last_name": 'Smith',
-        "preferred_pronouns": 'he/him',
-        "date_of_birth": '15/12/1990',
-        "occupation": 'Software Engineer',
-        "account_balance": 100,
-        "overdraft_limit": 10
-    }
-#Adding client into the attributes in client_details class
-c = client_class(**client)
 
-#Client before changes made
-# print(c)
-#
-# print(" ")
-#
-# #Changes made to clients by calling the functions
-# c.changing_preferred_pronoun("she/her")
-# c.changing_last_name("Kim")
-# c.changing_title("Miss")
-# c.changing_occupation("Doctor")
-# c.changing_first_name("Sarah")
-# c.removing_in_account_balance(120)
-# #Clients after changes made
-# print(c)
 

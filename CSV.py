@@ -6,9 +6,9 @@ from constants import *
 
 
 class csv:
-
+   # , index_col = "Title"
     def dataframe_of_csv_file(self):
-        dataframe = pd.read_csv(CSV_FILE_PATH)
+        dataframe = pd.read_csv(CSV_FILE_PATH, index_col="Title")
         return dataframe
 
     def refresh_csv_file(self, new_df):
