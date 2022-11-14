@@ -20,6 +20,9 @@ class Banking_Application:
         dataframe = csv_class_obj.dataframe_of_csv_file()
         return dataframe
 
+    def print_current_CSV_file(self):
+        print(self.__fetch_csv_dataframe().to_string())
+
     def __return_client_df_as_dict(self, dataframe_input):
         client_dict = {
             "title": dataframe_input['Title'].loc[dataframe_input.index[0]],
@@ -61,9 +64,6 @@ class Banking_Application:
                 dataframe.at[index, 'Overdraft Limit'] = new_overdraft_limit
         self.csv_class_obj.refresh_csv_file(dataframe)
 
-    def print_current_CSV_file(self):
-        print(self.__fetch_csv_dataframe().to_string())
-
     def adding_a_client(self,title,first_name,last_name,pronouns,DoB,occupation,account_balance, overdraft_limit):
         dataframe = self.__fetch_csv_dataframe()
         new_dataframe = dataframe.append({'Title':title,
@@ -81,17 +81,17 @@ class Banking_Application:
 BA_Obj = Banking_Application()
 csv_obj = csv()
 
-client_obj = client_class('Mr','Mike','Smith','he/him','15/12/1990','Software Engineer',100, 10)
+#client_obj = client_class('Mr','Mike','Smith','he/him','15/12/1990','Software Engineer',100, 10)
 
 #BA_Obj.adding_a_client('Mr','Mike','Smith','he/him','15/12/1990','Software Engineer',100, 10)
 
 
 #client_obj('Mr','Mike','Smith','he/him','15/12/1990','Software Engineer',100, 10)
 
-#print(BA_Obj.retrieving_a_client("Wilma","Huniwall","4/14/2000"))
+#print(BA_Obj.retrieving_a_client("Wilma","Huniwall","4/14/2000")) --> doesn't work with , index_col="Title" in the csv file
 
 #print(BA_Obj.accounts_with_negative_balance())
 
 #BA_Obj.changing_overdraft_limits("Skyler","Harrinson", "2/23/1960",100)
 
-#BA_Obj.print_current_CSV_file()
+BA_Obj.print_current_CSV_file()
