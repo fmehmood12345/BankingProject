@@ -1,3 +1,5 @@
+import pandas as pd
+
 
 class client_class:
     #constructor
@@ -51,5 +53,16 @@ class client_class:
     def changing_occupation(self,new_occupation):
         self.occupation = new_occupation
 
+    def return_client_dict(self):
+        return {
+        "Title": [f"{self.title}"],
+        "Firstname": [f"{self.first_name}"],
+        "Lastname": [f"{self.last_name}"],
+        "Pronouns": [f"{self.preferred_pronouns}"],
+        "Date of Birth": [f"{self.date_of_birth}"],
+        "Occupation": [f"{self.occupation}"],
+        "Account Balance": [self.account_balance],
+        "Overdraft Limit": [self.overdraft_limit]
+    }
 
 

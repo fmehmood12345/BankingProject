@@ -17,33 +17,36 @@ class Banking_Application:
         self.csv_class_obj= csv()
 
     def __fetch_csv_dataframe(self):
-        dataframe = csv_class_obj.dataframe_of_csv_file()
+        dataframe = self.csv_class_obj.dataframe_of_csv_file()
         return dataframe
 
     def print_current_CSV_file(self):
         print(self.__fetch_csv_dataframe().to_string())
 
-    def __return_client_df_as_dict(self, dataframe_input):
+    def __return_client_df_as_dict(self, **dataframe_input):
         client_dict = {
-            "title": dataframe_input['Title'].loc[dataframe_input.index[0]],
-            "first_name": dataframe_input['Firstname'].loc[dataframe_input.index[0]],
-            "last_name": dataframe_input['Lastname'].loc[dataframe_input.index[0]],
-            "preferred_pronouns": dataframe_input['Pronouns'].loc[dataframe_input.index[0]],
-            "date_of_birth": dataframe_input['Date of Birth'].loc[dataframe_input.index[0]],
-            "occupation": dataframe_input['Occupation'].loc[dataframe_input.index[0]],
-            "account_balance": dataframe_input['Account Balance'].loc[dataframe_input.index[0]],
-            "overdraft_limit": dataframe_input['Overdraft Limit'].loc[dataframe_input.index[0]]
+            "title": dataframe_input['Title'],
+            "first_name": dataframe_input['Firstname'],
+            "last_name": dataframe_input['Lastname'],
+            "preferred_pronouns": dataframe_input['Pronouns'],
+            "date_of_birth": dataframe_input['Date of Birth'],
+            "occupation": dataframe_input['Occupation'],
+            "account_balance": dataframe_input['Account Balance'],
+            "overdraft_limit": dataframe_input['Overdraft Limit']
         }
         return client_dict
 
     def retrieving_a_client(self, first_name,last_name,date_of_birth):
         dataframe = self.__fetch_csv_dataframe()
+
         df = dataframe[
-            (dataframe["Firstname"] == first_name) &
-            (dataframe["Lastname"] == last_name) &
+            (dataframe.Firstname == first_name) &
+            (dataframe.Lastname == last_name) &
             (dataframe["Date of Birth"] == date_of_birth)
             ]
-        client_obj = client_class(**self.__return_client_df_as_dict(df))
+        print(df.loc[95])
+
+        client_obj = client_class(**self.__return_client_df_as_dict(**(df.loc[95].to_dict())))
         return client_obj
 
 
@@ -64,34 +67,9 @@ class Banking_Application:
                 dataframe.at[index, 'Overdraft Limit'] = new_overdraft_limit
         self.csv_class_obj.refresh_csv_file(dataframe)
 
-    def adding_a_client(self,title,first_name,last_name,pronouns,DoB,occupation,account_balance, overdraft_limit):
+    def adding_a_client(self, client_dict):
         dataframe = self.__fetch_csv_dataframe()
-        new_dataframe = dataframe.append({'Title':title,
-                                          'Firstname':first_name,
-                                          'Lastname':last_name,
-                                          'Pronouns': pronouns,
-                                          'Date of Birth': DoB,
-                                          'Occupation':occupation,
-                                          'Account Balance': account_balance,
-                                          'Overdraft Limit': overdraft_limit
-                                          })
+        client_dataframe = pd.DataFrame(client_dict)
+        new_dataframe = pd.concat([dataframe, client_dataframe], ignore_index=True)
         self.csv_class_obj.refresh_csv_file(new_dataframe)
 
-#Objects of each class
-BA_Obj = Banking_Application()
-csv_obj = csv()
-
-#client_obj = client_class('Mr','Mike','Smith','he/him','15/12/1990','Software Engineer',100, 10)
-
-#BA_Obj.adding_a_client('Mr','Mike','Smith','he/him','15/12/1990','Software Engineer',100, 10)
-
-
-#client_obj('Mr','Mike','Smith','he/him','15/12/1990','Software Engineer',100, 10)
-
-#print(BA_Obj.retrieving_a_client("Wilma","Huniwall","4/14/2000")) --> doesn't work with , index_col="Title" in the csv file
-
-#print(BA_Obj.accounts_with_negative_balance())
-
-#BA_Obj.changing_overdraft_limits("Skyler","Harrinson", "2/23/1960",100)
-
-BA_Obj.print_current_CSV_file()
