@@ -61,3 +61,115 @@ class test_client_class(unittest.TestCase):
         client_obj.adding_in_account_balance(100)
         client_dict = client_obj.return_client_dict()
         self.assertEqual(200, client_dict['Account Balance'][0])
+
+#removing 150 to show what happens when the overdraft limit is exceeded.
+    def test_removing_in_account_balance(self):
+        client_details = {
+            "title": 'Mr',
+            "first_name": 'Gerald',
+            "last_name": 'Smith',
+            "preferred_pronouns": 'he/him',
+            "date_of_birth": '15/12/1990',
+            "occupation": 'Software Engineer',
+            "account_balance": 100,
+            "overdraft_limit": 10
+        }
+        client_obj = client_class(**client_details)
+        client_obj.removing_in_account_balance(150)
+        client_dict = client_obj.return_client_dict()
+        self.assertEqual(-45, client_dict['Account Balance'][0])
+
+    def test_changing_title(self):
+        client_details = {
+            "title": 'Mr',
+            "first_name": 'Gerald',
+            "last_name": 'Smith',
+            "preferred_pronouns": 'he/him',
+            "date_of_birth": '15/12/1990',
+            "occupation": 'Software Engineer',
+            "account_balance": 100,
+            "overdraft_limit": 10
+        }
+        client_obj = client_class(**client_details)
+        client_obj.changing_title("Mrs")
+        client_dict = client_obj.return_client_dict()
+        self.assertEqual("Mrs", client_dict['Title'][0])
+
+
+    def test_changing_first_name(self):
+        client_details = {
+            "title": 'Mr',
+            "first_name": 'Gerald',
+            "last_name": 'Smith',
+            "preferred_pronouns": 'he/him',
+            "date_of_birth": '15/12/1990',
+            "occupation": 'Software Engineer',
+            "account_balance": 100,
+            "overdraft_limit": 10
+        }
+        client_obj = client_class(**client_details)
+        client_obj.changing_first_name("Harry")
+        client_dict = client_obj.return_client_dict()
+        self.assertEqual("Harry", client_dict['Firstname'][0])
+
+    def test_changing_last_name(self):
+        client_details = {
+            "title": 'Mr',
+            "first_name": 'Gerald',
+            "last_name": 'Smith',
+            "preferred_pronouns": 'he/him',
+            "date_of_birth": '15/12/1990',
+            "occupation": 'Software Engineer',
+            "account_balance": 100,
+            "overdraft_limit": 10
+        }
+        client_obj = client_class(**client_details)
+        client_obj.changing_last_name("Lowe")
+        client_dict = client_obj.return_client_dict()
+        self.assertEqual("Lowe", client_dict['Lastname'][0])
+
+    def test_changing_preferred_pronoun(self):
+        client_details = {
+            "title": 'Mr',
+            "first_name": 'Gerald',
+            "last_name": 'Smith',
+            "preferred_pronouns": 'he/him',
+            "date_of_birth": '15/12/1990',
+            "occupation": 'Software Engineer',
+            "account_balance": 100,
+            "overdraft_limit": 10
+        }
+        client_obj = client_class(**client_details)
+        client_obj.changing_preferred_pronoun("she/her")
+        client_dict = client_obj.return_client_dict()
+        self.assertEqual("she/her", client_dict['Pronouns'][0])
+
+    def test_changing_occupation(self):
+        client_details = {
+            "title": 'Mr',
+            "first_name": 'Gerald',
+            "last_name": 'Smith',
+            "preferred_pronouns": 'he/him',
+            "date_of_birth": '15/12/1990',
+            "occupation": 'Software Engineer',
+            "account_balance": 100,
+            "overdraft_limit": 10
+        }
+        client_obj = client_class(**client_details)
+        client_obj.changing_occupation("Singer")
+        client_dict = client_obj.return_client_dict()
+        self.assertEqual("Singer", client_dict['Occupation'][0])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
