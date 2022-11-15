@@ -5,14 +5,14 @@ class client_class:
     #constructor
     def __init__(self,title,first_name,last_name,preferred_pronouns,date_of_birth,occupation,account_balance,overdraft_limit):
         #instance variables
-        self.first_name = first_name
-        self.last_name = last_name
-        self.title = title
-        self.preferred_pronouns = preferred_pronouns
-        self.date_of_birth = date_of_birth
-        self.occupation = occupation
-        self.account_balance = account_balance
-        self.overdraft_limit = overdraft_limit
+        self.first_name = str(first_name)
+        self.last_name = str(last_name)
+        self.title = str(title)
+        self.preferred_pronouns = str(preferred_pronouns)
+        self.date_of_birth = str(date_of_birth)
+        self.occupation = str(occupation)
+        self.account_balance = int(account_balance)
+        self.overdraft_limit = int(overdraft_limit)
 
     def __str__(self):
          return (
