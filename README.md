@@ -1,20 +1,22 @@
 # 1034 Project 2 - Farheen Mehmood
 Just bullet-pointing for now so that I know what to put in each section:
 ### <u>Overview of the project</u>
-I have 3 different python files in this project: clients, banking_application and CSV.
+I have 3 different python files in this project clients, banking_application and CSV.
 
 The clients class only has functions which will edit attribute which the client will have control over in a real life scenario. For example, the client shouldn't be able to change their date of birth or their overdraft limit. They also should only be able to add to or withdraw money from their account not change the account balance.
 
-In my banking application class, I have 8 functions:
-1. __fetch_csv_dataframe() : This is to fetch the dataframe which contains all the data from the CSV file so that we can manipulate it.
-2. print_current_CSV_file(): This is a function to print out the csv dataframe so that I can check if data is changed as I wanted.
-3. __return_client_df_as_dict(): This is a function I have made to change a client dataframe to a dictionary so that it can go into my clients file and be presented in the form I wanted it in.
-4. retrieving_a_client(): In this function, I retrieve a client from the dataframe I've made of the CSV file and then pass it through the __return_client_df_as_dict() function which will present it as required.
+<u>In my banking application class, I have 8 functions:</u>
+1. __fetch_csv_dataframe() : This is to fetch and return the dataframe which contains all the data from the CSV file so that we can manipulate it.
+2. print_current_CSV_file(): This is a function to print out the csv dataframe once it has been fetched using the *__fetch_csv_dataframe()* function.
+3. __return_client_df_as_dict(): This function will change the dictionary called into the parameter into a dataframe.
+4. retrieving_a_client(): In this function, I retrieve a client by comparing the firstname, lastname and date of birth with other clients in the CSV dataframe.
 5. accounts_with_negative_balance(): This function retrieves all clients which have a negative account balance from the csv dataframe.
 6. deleting_a_client() : The functions compares the first_name, last_name and date_of_birth which will be called into the function with the Firstname, Lastname and Date of Birth from the dataframe and deletes that client from the dataframe. It then runs the refresh_csv_file function in the CSV class which will update the csv file.
 7. changing_overdraft_limits(): Just like *deleting_a_client()*, first_name last_name and date_of_birth is called into the function, however in this function, a new overdraft limit is also called in. The called in firstname, lastname and date birth is compared with the Firstname, Lastname and Date of Birth from the database and then the overdraft limit is changed to the new overdraft limit which is called in.
 8. adding_a_client(): This will take a client dictionary as an argument and turn it into a dataframe. Then a concat method is used to join the csv dataframe and the dataframe of the new client together. Then a function called *refresh_csv_file* is called to write the updated dataframe to the csv file. 
-NOT SURE HOW MUCH DETAIL TO PUT IN SO THIS IS INCASE NOT MUCH DETAIL IS REQUIRED: *This function joins the client dataframe and the csv dataframe together and then writes this to the csv file to update it by calling the *refresh_csv_file* function.*
+9. searching_by_firstname(): This is a function which first check if the inputted firstname is equal to any of the firstnames in the CSV file. If there is a client with the inputted firstname then code is run to output all information on that client. Otherwise, a print statement is run which states that a client with the passed firstname does not exist in the CSV file.
+10. searching_by_lastname(): This function searches the dataframe of the CSV file for clients with the same firstname as the one called into the function, if they match then code to return all the details of the client is run otherwise an else statement is run which will print an error saying that the client with the lastname inputted into the function doesn't exist.
+11. searching_by_date_of_birth(): This function searches the dataframe of the CSV file for clients with the date of birth equal to the inputted date of birth in the function. If there is no date of birth equal to the inputted date of birth then a print statement is run which will state that a client with date of birth called into the function doesn't exist. Otherwise, details of all the clients with that date of birth are outputted. 
 
 Finally, I have a CSV class which has 2 functions. The first function creates a dataframe of the entire CSV file. This is so that I can manipulate the data in the file without directly interfering with the CSV file. Then to update the CSV file after changes have been made, I have another function which will add my dataframe to the CSV file. I have called this function everytime a client has to be edited so that it will update in the CSV file as well. 
 ### <u>Assumptions made when building the application</u>

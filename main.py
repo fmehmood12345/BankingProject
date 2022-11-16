@@ -3,9 +3,6 @@ import pandas as pd
 from banking_application import Banking_Application
 from clients import client_class
 
-
-
-
 BA_Obj = Banking_Application()
 
 client = {
@@ -20,12 +17,31 @@ client = {
     }
 client_object = client_class(**client)
 
-#print(BA_Obj.accounts_with_negative_balance())
-#BA_Obj.deleting_a_client("Alice","Liddyard","8/31/1978")
-#BA_Obj.changing_overdraft_limits("Skyler","Harrinson","2/23/1960","156")
-BA_Obj.adding_a_client(client_object.return_client_dict())
-#print(BA_Obj.print_current_CSV_file())
-#print(BA_Obj.retrieving_a_client("Wilma","Huniwall","4/14/2000"))
+# client_object.changing_title("Mrs")
+# client_object.changing_first_name("Susan")
+# client_object.changing_last_name("Blunt")
+# client_object.changing_preferred_pronoun("she/her")
+# client_object.changing_occupation("Designer")
+# client_object.removing_in_account_balance(100)
+# client_object.adding_in_account_balance(200)
+# print(client_object.return_client_dict())
+
+
+
+# BA_Obj.deleting_a_client("Alicxe","Liddyard","8/09/1978")
+# BA_Obj.changing_overdraft_limits("Skyler","Harrinson","2/07/1960","156")
+# BA_Obj.adding_a_client(client_object.return_client_dict())
+
+
+
+# print(BA_Obj.accounts_with_negative_balance())
+# print(BA_Obj.print_current_CSV_file())
+# print(BA_Obj.retrieving_a_client("Wilma","Huniwall","4/04/2000")) ----------------> DOESNT WORK JUST YET
+# print(BA_Obj.searching_by_firstname("Sarah"))
+# print(BA_Obj.searching_by_lastname("Huniwall"))
+# print(BA_Obj.searching_by_date_of_birth("4/04/2000"))
+
+
 
 
 

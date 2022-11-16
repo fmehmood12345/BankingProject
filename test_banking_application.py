@@ -1,21 +1,5 @@
 from banking_application import *
 from clients import client_class
-# from nose.tools import assert_dict_equal
-# def test_accounts_with_negative_balance():
-#     BA_Obj = Banking_Application()
-#     x = BA_Obj.accounts_with_negative_balance()
-#     expected = {
-#         "Title": 'Honorable',
-#         "Firstname": 'Jeffie',
-#         "Lastname": 'Abadam',
-#         "Pronouns": 'he/him',
-#         "Date of Birth": '23/28/2003',
-#         "occupation": 'VP Product Management',
-#         "Account Balance": '-682162471',
-#         "Overdraft Limit": '614776292'
-#     }
-#     assert_dict_equal(expected, x.to_dict(), "the wrong client was outputted")
-#
 # '''The tests should be run on all functions in all the files. For banking application, it should be:
 # -__return_client_df_as_dict
 # -retrieving_a_client
@@ -161,6 +145,21 @@ class test_client_class(unittest.TestCase):
         self.assertEqual("Singer", client_dict['Occupation'][0])
 
 
+    def test_accounts_with_negative_balance(self):
+        banking_app_obj = Banking_Application()
+        client_details = {
+            "Title": 'Honorable',
+            "Firstname": 'Jeffie',
+            "Lastname": 'Abadam',
+            "Pronouns": 'he/him',
+            "Date of Birth": '15/12/1990',
+            "Occupation": 'VP Product Management',
+            "Account Balance": -682162471,
+            "Overdraft Limit": 614776292
+        }
+        expected_client_object = pd.DataFrame.from_dict(**client_details)
+        actual_response = banking_app_obj.accounts_with_negative_balance()
+        self.assertEquals(expected_client_object[0], actual_response[0])
 
 
 
