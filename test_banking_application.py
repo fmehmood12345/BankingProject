@@ -147,26 +147,30 @@ class test_client_class(unittest.TestCase):
 
     def test_accounts_with_negative_balance(self):
         banking_app_obj = Banking_Application()
-        client_details = {
-            "Title": 'Honorable',
-            "Firstname": 'Jeffie',
-            "Lastname": 'Abadam',
-            "Pronouns": 'he/him',
-            "Date of Birth": '15/12/1990',
-            "Occupation": 'VP Product Management',
-            "Account Balance": -682162471,
-            "Overdraft Limit": 614776292
-        }
-        expected_client_object = pd.DataFrame.from_dict(**client_details)
-        actual_response = banking_app_obj.accounts_with_negative_balance()
-        self.assertEquals(expected_client_object[0], actual_response[0])
+        actual_client_details = banking_app_obj.searching_for_accounts_with_negative_balance()
+        expected = {'Title': {71: 'Mrs'}, 'Firstname': {71: 'Loy'}, 'Lastname': {71: 'Brewis'}, 'Pronouns': {71: 'he/him'}, 'Date of Birth': {71: '7/01/1955'}, 'Occupation': {71: 'Environmental Specialist'}, 'Account Balance': {71: -72798015}, 'Overdraft Limit': {71: 939400254}}
+        self.assertEqual(expected,actual_client_details)
 
+    def test_searching_by_firstname(self):
+        banking_app_obj = Banking_Application()
+        expected= {'Title': {95: 'Rev'}, 'Firstname': {95: 'Wilma'}, 'Lastname': {95: 'Huniwall'}, 'Pronouns': {95: 'they/them'}, 'Date of Birth': {95: '4/04/2000'}, 'Occupation': {95: 'Human Resources Assistant II'}, 'Account Balance': {95: 58438860}, 'Overdraft Limit': {95: 3867051}}
+        actual_client= banking_app_obj.searching_by_firstname("Wilma")
+        self.assertEqual(expected,actual_client)
 
+    def test_searching_by_lastname(self):
+        banking_app_obj = Banking_Application()
+        expected = {'Title': {95: 'Rev'}, 'Firstname': {95: 'Wilma'}, 'Lastname': {95: 'Huniwall'}, 'Pronouns': {95: 'they/them'}, 'Date of Birth': {95: '4/04/2000'}, 'Occupation': {95: 'Human Resources Assistant II'}, 'Account Balance': {95: 58438860}, 'Overdraft Limit': {95: 3867051}}
+        actual_client = banking_app_obj.searching_by_lastname("Huniwall")
+        self.assertEqual(expected, actual_client)
 
+    def test_searching_by_date_of_birth(self):
+        banking_app_obj = Banking_Application()
+        expected = {'Title': {80: 'Mrs'}, 'Firstname': {80: 'Delphine'}, 'Lastname': {80: 'Neiland'}, 'Pronouns': {80: 'she/her'}, 'Date of Birth': {80: '10/04/1979'}, 'Occupation': {80: 'VP Marketing'}, 'Account Balance': {80: 414546988}, 'Overdraft Limit': {80: 55133275}}
+        actual_client = banking_app_obj.searching_by_date_of_birth("10/04/1979")
+        self.assertEqual(expected, actual_client)
 
-
-
-
+    def test_changing_overdraft_limits(self):
+        banking_app_obj = Banking_Application()
 
 
 

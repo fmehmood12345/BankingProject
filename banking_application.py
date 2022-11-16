@@ -3,17 +3,24 @@ from CSV import *
 import pandas as pd
 from constants import *
 
-'''What to have in the banking application class:
-            -retrieving a client by searching first and last name and DoB
+'''Functions in the banking application class:
+            -Fetching the CSV dataframe
+            -Printing the CSV dataframe
+            -Private function which returns the client dataframe as a dictionary
+            -Retrieving a client by searching first and last name and DoB
             -Change overdraft limits once you have retrieved a client
-            -Add and Delete clients
-            -Search by negative balance
-            -move money from one account to another    '''
+            -Add clients
+            -Delete clients
+            -Search by firstname
+            -Search by lastname
+            -Search by date of birth
+            -Search by negative balance   '''
+
 
 class Banking_Application:
 
     def __init__(self):
-        self.csv_class_obj= csv()
+        self.csv_class_obj = csv()
 
     def __fetch_csv_dataframe(self):
         dataframe = self.csv_class_obj.dataframe_of_csv_file()
@@ -35,7 +42,7 @@ class Banking_Application:
         }
         return client_dict
 
-    def retrieving_a_client(self, first_name,last_name,date_of_birth):
+    def retrieving_a_client(self, first_name, last_name, date_of_birth):
         dataframe = self.__fetch_csv_dataframe()
         if (first_name == dataframe["Firstname"].to_string()) and (last_name == dataframe["Lastname"].to_string()) and (date_of_birth == dataframe["Date of Birth"].to_string()):
             df = dataframe[
@@ -47,63 +54,66 @@ class Banking_Application:
             client_obj = client_class(**self.__return_client_df_as_dict(**(df.loc[95].to_dict())))
             return client_obj
         else:
-            print("Error: There is no client called",first_name, last_name, "with date of birth",date_of_birth)
+            print("Error: There is no client called", first_name, last_name, "with date of birth", date_of_birth,
+                  "in the CSV file.")
 
-
-    def accounts_with_negative_balance(self):
+    def searching_for_accounts_with_negative_balance(self):
         dataframe = self.__fetch_csv_dataframe()
         df = dataframe[dataframe["Account Balance"] < 0]
-        return df.to_string()
+        return df.to_dict()
 
     def searching_by_firstname(self, first_name):
+        # if first_name == dataframe["Firstname"].to_string():
         dataframe = self.__fetch_csv_dataframe()
-        if first_name == dataframe["Firstname"].to_string():
-            df = dataframe[(dataframe["Firstname"] == first_name)]
-            return df.to_string()
-        else:
-            print("Error: There is no one with the firstname: ",first_name)
-
+        df = dataframe[(dataframe["Firstname"] == first_name)]
+        return df.to_dict()
+        # else:
+        #     print("Error: There is no one with the firstname: ",first_name)
 
     def searching_by_lastname(self, last_name):
+        # if last_name == dataframe["Lastname"].to_string():
         dataframe = self.__fetch_csv_dataframe()
-        if last_name == dataframe["Lastname"].to_string():
-            df = dataframe[(dataframe["Lastname"] == last_name)]
-            return df.to_string()
-        else:
-            print("Error: There is no one with lastname: ",last_name)
+        df = dataframe[(dataframe["Lastname"] == last_name)]
+        return df.to_dict()
+        # else:
+        #     print("Error: There is no one with the lastname: ",last_name)
+
 
     def searching_by_date_of_birth(self, date_of_birth):
         dataframe = self.__fetch_csv_dataframe()
-        if date_of_birth == dataframe["Date of Birth"].to_string():
-            df = dataframe[(dataframe["Date of Birth"] == date_of_birth)]
-            return df.to_string()
-        else:
-            print("Error: There is no one with date of birth: ",date_of_birth)
+        #if date_of_birth == dataframe["Date of Birth"].to_string():
+        df = dataframe[(dataframe["Date of Birth"] == date_of_birth)]
+        return df.to_dict()
+        # else:
+        #     print("Error: There is no one with date of birth: ",date_of_birth)
 
-
-    def deleting_a_client(self,first_name, last_name, date_of_birth):
+    def deleting_a_client(self, first_name, last_name, date_of_birth):
         dataframe = self.__fetch_csv_dataframe()
-        if (first_name == dataframe["Firstname"].to_string()) and (last_name == dataframe["Lastname"].to_string()) and (date_of_birth == dataframe["Date of Birth"].to_string()):
-            dataframe.drop(dataframe[(dataframe["Firstname"] == first_name) & (dataframe["Lastname"] == last_name) & (dataframe["Date of Birth"] == date_of_birth)].index, inplace=True)
-            self.csv_class_obj.refresh_csv_file(dataframe)
-        else:
-            print("Error: There is no client called",first_name, last_name, "with date of birth",date_of_birth)
-
-    def changing_overdraft_limits(self,first_name, last_name, date_of_birth, new_overdraft_limit):
-        dataframe = self.__fetch_csv_dataframe()
-        if (first_name == dataframe["Firstname"].to_string()) and (last_name == dataframe["Lastname"].to_string()) and (date_of_birth == dataframe["Date of Birth"].to_string()):
-            for index, row in dataframe.iterrows():
-                if row['Firstname'] == first_name and row['Lastname'] == last_name and row['Date of Birth'] == date_of_birth:
-                    dataframe.at[index, 'Overdraft Limit'] = new_overdraft_limit
-                    self.csv_class_obj.refresh_csv_file(dataframe)
-        else:
-            print("Error: There is no client called",first_name, last_name, "with date of birth",date_of_birth)
+        #if (first_name == dataframe["Firstname"].to_string()) and (last_name == dataframe["Lastname"].to_string()) and (date_of_birth == dataframe["Date of Birth"].to_string()):
+        dataframe.drop(dataframe[(dataframe["Firstname"] == first_name) & (dataframe["Lastname"] == last_name) & (dataframe["Date of Birth"] == date_of_birth)].index, inplace=True)
+        self.csv_class_obj.refresh_csv_file(dataframe)
+        # else:
+        #     print("Error: There is no client called", first_name, last_name, "with date of birth", date_of_birth,
+        #           "in the CSV file.")
 
     def adding_a_client(self, client_dict):
         dataframe = self.__fetch_csv_dataframe()
         client_dataframe = pd.DataFrame(client_dict)
-        if client_dataframe["Firstname"].to_string() != dataframe["Firstname"].to_string(): #and (client_dataframe["Lastname"].to_string() == dataframe["Lastname"].to_string()) and (client_dataframe["Date of Birth"].to_string() == dataframe["Date of Birth"].to_string()):
-            new_dataframe = pd.concat([dataframe, client_dataframe], ignore_index=True)
-            self.csv_class_obj.refresh_csv_file(new_dataframe)
-        else:
-            print("Error: There is already a client called", client_dataframe["first_name"].to_string(), client_dataframe["last_name"].to_string(), "with date of birth",client_dataframe["date_of_birth"].to_string())
+        #if client_dataframe["Firstname"].to_string() != dataframe["Firstname"].to_string() and (client_dataframe["Lastname"].to_string() == dataframe["Lastname"].to_string()) and (client_dataframe["Date of Birth"].to_string() == dataframe["Date of Birth"].to_string()):
+        new_dataframe = pd.concat([dataframe, client_dataframe], ignore_index=True)
+        self.csv_class_obj.refresh_csv_file(new_dataframe)
+        # else:
+        #     print("Error: There is already a client called", client_dataframe["first_name"].to_string(),
+        #           client_dataframe["last_name"].to_string(), "with date of birth",
+        #           client_dataframe["date_of_birth"].to_string())
+
+    def changing_overdraft_limits(self, first_name, last_name, date_of_birth, new_overdraft_limit):
+        dataframe = self.__fetch_csv_dataframe()
+        #if (first_name == dataframe["Firstname"].to_string()) and (last_name == dataframe["Lastname"].to_string()) and (date_of_birth == dataframe["Date of Birth"].to_string()):
+        for index, row in dataframe.iterrows():
+            if row['Firstname'] == first_name and row['Lastname'] == last_name and row['Date of Birth'] == date_of_birth:
+                dataframe.at[index, 'Overdraft Limit'] = new_overdraft_limit
+                self.csv_class_obj.refresh_csv_file(dataframe)
+        # else:
+        #     print("Error: There is no client called", first_name, last_name, "with date of birth", date_of_birth,
+        #           "in the CSV file. Overdraft limit cannot be changed.")

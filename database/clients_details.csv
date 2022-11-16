@@ -71,14 +71,14 @@ Mr,Pauly,Groome,he/him,07/10/1955,Chemical Engineer,557832183,29492855
 Rev,Yule,Dach,he/him,10/09/1997,Structural Engineer,967059627,884731888
 Mrs,Catlee,Ayshford,she/her,08/01/1997,Research Associate,633176238,534806598
 Mrs,Loy,Brewis,he/him,7/01/1955,Environmental Specialist,-72798015,939400254
-Dr,Tripp,Delamere,he/him,10/06/1963,Occupational Therapist,-880727976,24833986
-Dr,Kippie,Kowal,she/her,02/11/1995,Technical Writer,-446574792,533418
+Dr,Tripp,Delamere,he/him,10/06/1963,Occupational Therapist,880727976,24833986
+Dr,Kippie,Kowal,she/her,02/11/1995,Technical Writer,446574792,533418
 Ms,Cornall,Nock,he/him,9/04/1974,Junior Executive,662669811,308525372
-Rev,Ruben,Mullaney,he/him,02/01/1966,Automation Specialist II,-44633252,80551690
+Rev,Ruben,Mullaney,he/him,02/01/1966,Automation Specialist II,44633252,80551690
 Mr,Gaylor,Thistleton,he/him,7/03/1953,Accounting Assistant IV,970828192,9211976
 Dr,Felicle,Mitchely,she/her,2/02/1991,Account Executive,514113953,546276128
 Ms,Noelyn,Figgen,she/her,10/01/1963,Occupational Therapist,405278570,9668744
-Rev,Wallas,Bloor,he/him,10/04/1984,Clinical Specialist,-473982887,122142723
+Rev,Wallas,Bloor,he/him,10/04/1984,Clinical Specialist,473982887,122142723
 Mrs,Delphine,Neiland,she/her,10/04/1979,VP Marketing,414546988,55133275
 Dr,Kinsley,Merlin,he/him,11/01/1952,Cost Accountant,929371499,185467933
 Honorable,Jeffie,Abadam,he/him,3/12/2003,VP Product Management,682162471,614776292
@@ -96,5 +96,5 @@ Dr,Chrysa,Feronet,she/her,05/07/2000,Environmental Tech,156183211,33642949
 Rev,Sybila,Dowding,she/her,10/10/1994,Legal Assistant,585519003,772959453
 Rev,Wilma,Huniwall,they/them,4/04/2000,Human Resources Assistant II,58438860,3867051
 Rev,Dragon,Vikram,he/him,06/04/2004,Astronaut,361540550,100
-Ms,Skyler,Harrinson,they/them,2/07/1960,Research and Development,4562,100
+Ms,Skyler,Harrinson,they/them,2/07/1960,Research and Development,4562,1560
 Mr,Gerald,Smith,he/him,15/12/1990,Software Engineer,100,10
