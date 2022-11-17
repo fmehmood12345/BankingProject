@@ -70,7 +70,8 @@ class Banking_Application:
     lastname and date of birth called into the function is compared with the firstname, lastname and date of birth in 
     the CSV dataframe to find the respective client. Once they have been found, they are put in a dataframe. Then this
     client dataframe is called into a function which returns a client as a dictionary. Finally this dictionary is 
-    returned.'''
+    returned.Assert makes new_first_name, last_name and date_of_birth a string and an error message is printed if this 
+    requirement is not met.'''
 
     def searching_for_accounts_with_negative_balance(self):
         try:
