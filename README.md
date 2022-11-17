@@ -25,7 +25,6 @@ I wanted to make this application as realistic as possible therefore I decided t
 1. python version 3.11
 2. pandas
 3. pip
-4. complete setup of virtual environment
 ### <u>Specific use case examples of how to run this application</u> 
 <u> How to run functions in the banking application class</u>
 

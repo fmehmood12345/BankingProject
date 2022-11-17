@@ -74,21 +74,21 @@ class Banking_Application:
         # if last_name == dataframe["Lastname"].to_string():
         dataframe = self.__fetch_csv_dataframe()
         df = dataframe[(dataframe["Lastname"] == last_name)]
-        client_obj = client_class(**self.__return_client_df_as_dict(**(df.to_dict())))
-        return client_obj
+        return df.to_string()
         # else:
         #     print("Error: There is no one with the lastname: ",last_name)
-    ''' '''
+    '''This method takes the CSV file as a dataframe by calling the fetch_csv_dataframe method from the CSV.py file. 
+     Then the last name passed into the parameter is compared with all the lastnames in the lastname column in the 
+     dataframe and the respective client is returned as a dataframe.'''
 
     def searching_by_date_of_birth(self, date_of_birth):
         dataframe = self.__fetch_csv_dataframe()
         #if date_of_birth == dataframe["Date of Birth"].to_string():
         df = dataframe[(dataframe["Date of Birth"] == date_of_birth)]
-        client_obj = client_class(**self.__return_client_df_as_dict(**(df.to_dict())))
-        return client_obj
+        return df.to_string()
         # else:
         #     print("Error: There is no one with date of birth: ",date_of_birth)
-    ''' '''
+    ''' This method searched for all clients with the same date of birth and prints at out as a dataframe.'''
 
     def deleting_a_client(self, first_name, last_name, date_of_birth):
         dataframe = self.__fetch_csv_dataframe()
@@ -98,7 +98,8 @@ class Banking_Application:
         # else:
         #     print("Error: There is no client called", first_name, last_name, "with date of birth", date_of_birth,
         #           "in the CSV file.")
-    ''' '''
+    '''This method deletes a client by comparing first names, last names and date of birth with clients and removes the 
+     a client who's details match with the passed parameters.'''
 
     def adding_a_client(self, client_dict):
         dataframe = self.__fetch_csv_dataframe()
@@ -110,7 +111,7 @@ class Banking_Application:
         #     print("Error: There is already a client called", client_dataframe["first_name"].to_string(),
         #           client_dataframe["last_name"].to_string(), "with date of birth",
         #           client_dataframe["date_of_birth"].to_string())
-    ''' '''
+    ''' This method adds a client dataframe into the CSV file.'''
 
     def changing_overdraft_limits(self, first_name, last_name, date_of_birth, new_overdraft_limit):
         dataframe = self.__fetch_csv_dataframe()
@@ -122,4 +123,5 @@ class Banking_Application:
         # else:
         #     print("Error: There is no client called", first_name, last_name, "with date of birth", date_of_birth,
         #           "in the CSV file. Overdraft limit cannot be changed.")
-    ''' '''
+    '''This method changes a specific clients overdraft limits. A specific client is chosen through comparing the given 
+     attributes with the existing clients.'''
