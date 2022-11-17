@@ -70,7 +70,7 @@ Dr,Cindie,Oakland,she/her,11/09/1959,Financial Analyst,892818559,116396043
 Mr,Pauly,Groome,he/him,07/10/1955,Chemical Engineer,557832183,29492855
 Rev,Yule,Dach,he/him,10/09/1997,Structural Engineer,967059627,884731888
 Mrs,Catlee,Ayshford,she/her,08/01/1997,Research Associate,633176238,534806598
-Mrs,Loy,Brewis,he/him,7/01/1955,Environmental Specialist,-72798015,939400254
+Mrs,Loy,Brewis,he/him,7/01/1955,Environmental Specialist,72798015,939400254
 Dr,Tripp,Delamere,he/him,10/06/1963,Occupational Therapist,880727976,24833986
 Dr,Kippie,Kowal,she/her,02/11/1995,Technical Writer,446574792,533418
 Ms,Cornall,Nock,he/him,9/04/1974,Junior Executive,662669811,308525372
@@ -86,7 +86,7 @@ Mr,Yoshiko,Krol,they/them,11/11/1997,Civil Engineer,673880700,898037625
 Mr,Gwenneth,Mallabone,she/her,2/12/1968,Senior Developer,221121918,8035268
 Ms,Alice,Liddyard,she/her,8/09/1978,Librarian,771030597,454355717
 Ms,Godfry,Pardew,he/him,02/04/1976,Research Nurse,333477151,672934376
-Mr,Camala,Rickardsson,she/her,12/21/1993,Occupational Therapist,-712313706,943835532
+Mr,Camala,Rickardsson,she/her,12/21/1993,Occupational Therapist,712313706,943835532
 Rev,Libbey,MacGall,they/them,02/10/1973,Programmer Analyst III,572400097,844492981
 Dr,Amata,Mattiuzzi,she/her,09/12/1997,Technical Writer,371814972,934004797
 Honorable,Berton,Maxsted,he/him,10/28/1976,Compensation Analyst,417831638,168175360
@@ -96,5 +96,8 @@ Dr,Chrysa,Feronet,she/her,05/07/2000,Environmental Tech,156183211,33642949
 Rev,Sybila,Dowding,she/her,10/10/1994,Legal Assistant,585519003,772959453
 Rev,Wilma,Huniwall,they/them,4/04/2000,Human Resources Assistant II,58438860,3867051
 Rev,Dragon,Vikram,he/him,06/04/2004,Astronaut,361540550,100
-Ms,Skyler,Harrinson,they/them,2/07/1960,Research and Development,4562,1560
+Ms,Skyler,Harrinson,they/them,2/07/1960,Research and Development,4562,1517
 Mr,Gerald,Smith,he/him,15/12/1990,Software Engineer,100,10
+Rev,Wilma,Huny,they/them,4/04/2000,Assistant II,58438860,3867
+Mrs,Alex,Liyard,she/her,8/09/1978,Teacher,45428,129
+Mr,Henry,Smith,he/him,15/12/1990,Software Engineer,100,10

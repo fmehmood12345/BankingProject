@@ -4,7 +4,7 @@ from clients import client_class
 
 client = {
         "title": 'Mr',
-        "first_name": "Gfhe",
+        "first_name": "Henry",
         "last_name": 'Smith',
         "preferred_pronouns": 'he/him',
         "date_of_birth": '15/12/1990',
@@ -39,17 +39,15 @@ BA_Obj = Banking_Application()
 # print(client_object.return_client_dict())
 
 
-# BA_Obj.deleting_a_client("Alice","Liddyard","8/09/1978")
-# BA_Obj.changing_overdraft_limits("Skyler","Harrinson","2/07/1960","1560")
-# BA_Obj.adding_a_client(client_object.return_client_dict())
-#
-#
-#
-# print(BA_Obj.searching_for_accounts_with_negative_balance())
+#BA_Obj.deleting_a_client("Alice","Liddyard","8/09/1978")
+BA_Obj.changing_overdraft_limits("Skyler","Harrinson","2/07/1960",1517)
+#BA_Obj.adding_a_client(client_object.return_client_dict())
+
+#print(BA_Obj.searching_for_accounts_with_negative_balance())
 # print(BA_Obj.print_current_CSV_file())
-# print(BA_Obj.retrieving_a_client("Gerald", "Smith", "15/12/1990"))
-# print(BA_Obj.searching_by_firstname("Wilma"))
-# print(BA_Obj.searching_by_lastname("Huniwall"))
-# print(BA_Obj.searching_by_date_of_birth("10/04/1979"))
+#print(BA_Obj.retrieving_a_client("Gerald", "Smith", "15/12/1990"))
+#print(BA_Obj.searching_by_firstname("Wilma"))
+#print(BA_Obj.searching_by_lastname("Huniwall"))
+#print(BA_Obj.searching_by_date_of_birth("10/04/1979"))
 
 
