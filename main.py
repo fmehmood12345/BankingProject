@@ -4,7 +4,7 @@ from clients import client_class
 
 client = {
         "title": 'Mr',
-        "first_name": 'Gerald',
+        "first_name": "Gfhe",
         "last_name": 'Smith',
         "preferred_pronouns": 'he/him',
         "date_of_birth": '15/12/1990',
@@ -16,14 +16,15 @@ client_object = client_class(**client)
 BA_Obj = Banking_Application()
 
 
-client_object.changing_title("Mrs")
-client_object.changing_first_name("Susan")
-client_object.changing_last_name("Blunt")
-client_object.changing_preferred_pronoun("she/her")
-client_object.changing_occupation("Designer")
-client_object.removing_in_account_balance(100)
-client_object.adding_in_account_balance(200)
-print(client_object.return_client_dict())
+# client_object.changing_title("Mrs")
+# client_object.changing_first_name("Susan")
+# client_object.changing_last_name("Blunt")
+# client_object.changing_preferred_pronoun("she/her")
+# client_object.changing_occupation("Designer")
+# client_object.removing_in_account_balance(100)
+# client_object.adding_in_account_balance(200)
+# print(client_object.return_client_dict())
+
 
 # #How to change the details of a client once it has been received:
 # client_from_CSV_File = BA_Obj.retrieving_a_client("Gerald", "Smith", "15/12/1990")
@@ -50,32 +51,5 @@ print(client_object.return_client_dict())
 # print(BA_Obj.searching_by_firstname("Wilma"))
 # print(BA_Obj.searching_by_lastname("Huniwall"))
 # print(BA_Obj.searching_by_date_of_birth("10/04/1979"))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

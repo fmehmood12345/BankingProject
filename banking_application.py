@@ -6,7 +6,10 @@ from constants import *
 class Banking_Application:
 
     def __init__(self):
-        self.csv_class_obj = csv()
+        try:
+            self.csv_class_obj = csv()
+        except BaseException as error:
+            print(f"There was an error while initiating the Banking_Application class: {error}")
     '''Made a constructor which is an object of the CSV class so that I can assess the functions in that class. '''
 
     def __fetch_csv_dataframe(self):
@@ -102,15 +105,14 @@ class Banking_Application:
      a client who's details match with the passed parameters.'''
 
     def adding_a_client(self, client_dict):
-        dataframe = self.__fetch_csv_dataframe()
-        client_dataframe = pd.DataFrame(client_dict)
-        #if client_dataframe["Firstname"].to_string() != dataframe["Firstname"].to_string() and (client_dataframe["Lastname"].to_string() == dataframe["Lastname"].to_string()) and (client_dataframe["Date of Birth"].to_string() == dataframe["Date of Birth"].to_string()):
-        new_dataframe = pd.concat([dataframe, client_dataframe], ignore_index=True)
-        self.csv_class_obj.refresh_csv_file(new_dataframe)
-        # else:
-        #     print("Error: There is already a client called", client_dataframe["first_name"].to_string(),
-        #           client_dataframe["last_name"].to_string(), "with date of birth",
-        #           client_dataframe["date_of_birth"].to_string())
+        try:
+            dataframe = self.__fetch_csv_dataframe()
+            client_dataframe = pd.DataFrame(client_dict)
+            new_dataframe = pd.concat([dataframe, client_dataframe], ignore_index=True)
+            self.csv_class_obj.refresh_csv_file(new_dataframe)
+        except BaseException as err:
+            print(f"ERROR: Failed to add a new client: {err}")
+
     ''' This method adds a client dataframe into the CSV file.'''
 
     def changing_overdraft_limits(self, first_name, last_name, date_of_birth, new_overdraft_limit):
