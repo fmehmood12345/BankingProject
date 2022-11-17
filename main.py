@@ -27,8 +27,8 @@ BA_Obj = Banking_Application()
 
 
 
-# BA_Obj.deleting_a_client("Alicxe","Liddyard","8/09/1978")
-BA_Obj.changing_overdraft_limits("Skyler","Harrinson","2/07/1960","1560")
+# BA_Obj.deleting_a_client("Alice","Liddyard","8/09/1978")
+#BA_Obj.changing_overdraft_limits("Skyler","Harrinson","2/07/1960","1560")
 # BA_Obj.adding_a_client(client_object.return_client_dict())
 
 
