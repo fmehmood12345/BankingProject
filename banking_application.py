@@ -27,6 +27,7 @@ class Banking_Application:
         return dataframe
 
     def print_current_CSV_file(self):
+
         print(self.__fetch_csv_dataframe().to_string())
 
     def __return_client_df_as_dict(self, **dataframe_input):
