@@ -2,14 +2,6 @@ from banking_application import *
 from clients import client_class
 import testing_payloads
 import unittest
-'''The tests should be run on all functions in all the files. For banking application, it should be:
--__return_client_df_as_dict
--retrieving_a_client
--accounts_with_negative_balance
--deleting_a_client
--changing_overdraft_limits
--adding_a_client'''
-
 class test_client_class(unittest.TestCase):
 
     def test_adding_in_account_balance(self):

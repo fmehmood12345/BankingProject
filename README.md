@@ -1,10 +1,6 @@
 # 1034 Project 2 - Farheen Mehmood
 
 ### <u>Overview of the project</u>
-<u>Testing Instructions</u>
-
-For testing do not make any changes in the clients CSV file as my tests are based of the current content of the clients CSV file.
-
 I have 3 different python files in this project clients, banking_application and CSV.
 
 The clients class only has methods which will edit attribute that the client will have control over in a real life scenario. For example, the client should only be able to deposit and withdraw money, change title, first name, last name, date of birth, preferred pronouns and occupation. The client cannot have control over how much their overdraft limit is therefore the method to change overdraft limit is in the banking application class.
@@ -29,6 +25,11 @@ I have a file called constants which I have made to store the file path of my CS
 For my unit testing, I have another file which tests the methods in my banking_application class however, I have also included methods of my client_class to test in this file. This is because a clients details should be altered when retrieved from the CSV file using the methods in the clients class.
 
 I have also done error handling in all my classes to make sure that if incorrect information is passed into the parameters, then an error message prints out. I decided to use the *BaseException* error throughout my methods because it allows a wider scope of errors to be handled and outputted in the print statement as opposed to just one type of error.
+
+<u>Testing Instructions</u>
+
+For testing do not make any changes in the clients CSV file as my tests are based of the current content of the clients CSV file. The methods *changing_overdraft_limits*, *adding_a_client* and *deleting_a_client* do not have unit tests done for them as they directly make changes in the CSV file. So in order to see if those methods work, run the method from the main.py file.
+
 ### <u>Assumptions made when building the application</u>
 I wanted to make this application as realistic as possible therefore I decided to have 3 separate classes which have different functionalities. Ideally, a client would not be able to change their overdraft limit or their date of birth, and they can only deposit or withdraw money from their account. A client class is responsible for editing only certain attributes e.g. clients only have control over editing title, firstname, lastname, pronouns and occupation. The bank will have control over the clients overdraft limits but the bank will not be able to change any of the clients personal details like firstname, lastname, occupation, preferred pronouns and title. The bank can add clients, delete clients, retrieve clients, change overdraft limits, search by firstname and lastname, search by date of birth, search by negative account balance and print out all clients. CSV class is responsible for just retrieving the csv file as a dataframe and then update the csv file once the data has been manipulated.
 ### <u>How to run the application</u>
