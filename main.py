@@ -2,17 +2,17 @@ import pandas as pd
 from banking_application import Banking_Application
 from clients import client_class
 
-client = {
-        "title": 'Mr',
-        "first_name": "Henry",
-        "last_name": 'Smith',
-        "preferred_pronouns": 'he/him',
-        "date_of_birth": '15/12/1990',
-        "occupation": 'Software Engineer',
-        "account_balance": 100,
-        "overdraft_limit": 10
-    }
-client_object = client_class(**client)
+# client = {
+#         "Title": 'Mr',
+#         "first_name": "Henry",
+#         "last_name": 'Smith',
+#         "preferred_pronouns": 'he/him',
+#         "date_of_birth": '15/12/1990',
+#         "occupation": 'Software Engineer',
+#         "account_balance": 100,
+#         "overdraft_limit": 10
+#     }
+# client_object = client_class(**client)
 BA_Obj = Banking_Application()
 
 
@@ -40,7 +40,7 @@ BA_Obj = Banking_Application()
 
 
 #BA_Obj.deleting_a_client("Alice","Liddyard","8/09/1978")
-BA_Obj.changing_overdraft_limits("Skyler","Harrinson","2/07/1960",1517)
+# BA_Obj.changing_overdraft_limits("Skyler","Harrinson","2/07/1960","151")
 #BA_Obj.adding_a_client(client_object.return_client_dict())
 
 #print(BA_Obj.searching_for_accounts_with_negative_balance())

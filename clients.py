@@ -3,33 +3,33 @@ import pandas as pd
 
 class client_class:
     # constructor
-    def __init__(self, title, first_name, last_name, preferred_pronouns, date_of_birth, occupation, account_balance,
-                 overdraft_limit):
+    def __init__(self, Title, Firstname, Lastname, Pronouns,Date_of_Birth, Occupation, Account_Balance,
+                 Overdraft_Limit):
         # instance variables
         try:
-            assert isinstance(first_name, str)
-            self.first_name = first_name
+            assert isinstance(Firstname, str)
+            self.first_name = Firstname
 
-            assert isinstance(last_name, str)
-            self.last_name = last_name
+            assert isinstance(Lastname, str)
+            self.last_name = Lastname
 
-            assert isinstance(title, str)
-            self.title = title
+            assert isinstance(Title, str)
+            self.title = Title
 
-            assert isinstance(preferred_pronouns, str)
-            self.preferred_pronouns = preferred_pronouns
+            assert isinstance(Pronouns, str)
+            self.preferred_pronouns = Pronouns
 
-            assert isinstance(date_of_birth, str)
-            self.date_of_birth = date_of_birth
+            assert isinstance(Date_of_Birth, str)
+            self.date_of_birth = Date_of_Birth
 
-            assert isinstance(occupation, str)
-            self.occupation = occupation
+            assert isinstance(Occupation, str)
+            self.occupation = Occupation
 
-            assert isinstance(account_balance, int)
-            self.account_balance = account_balance
+            assert isinstance(Account_Balance, int)
+            self.account_balance = Account_Balance
 
-            assert isinstance(overdraft_limit, int)
-            self.overdraft_limit = overdraft_limit
+            assert isinstance(Overdraft_Limit, int)
+            self.overdraft_limit = Overdraft_Limit
         except BaseException as err:
             print(f"ERROR: There was an error while initiating client_class object {type(err)}.")
 

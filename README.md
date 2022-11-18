@@ -1,6 +1,10 @@
 # 1034 Project 2 - Farheen Mehmood
 
 ### <u>Overview of the project</u>
+<u>Testing Instructions</u>
+
+For testing do not make any changes in the clients CSV file as my tests are based of the current content of the clients CSV file.
+
 I have 3 different python files in this project clients, banking_application and CSV.
 
 The clients class only has methods which will edit attribute that the client will have control over in a real life scenario. For example, the client should only be able to deposit and withdraw money, change title, first name, last name, date of birth, preferred pronouns and occupation. The client cannot have control over how much their overdraft limit is therefore the method to change overdraft limit is in the banking application class.
@@ -68,4 +72,4 @@ First have a dictionary of all the details of the client you want to add. Then m
 6. `client_object.removing_in_account_balance(100)`: This method withdraws money from the account balance. If the amount removed is more than the account balance plus the overdraft limit then the account balance will go into negatives and an extra £5 is charged. The class object is used to call the method and the amount withdrawed is passed as a parameter.
 7. `client_object.adding_in_account_balance(200)`: The class object will call the method and the deposit amount is passed into the parameter. Then the account balance and incremented by the deposit amount.
 
-These methods are demonstrated in the main.py file.
+These methods are demonstrated in the main.py file. Simply remove the comment to see the method run.

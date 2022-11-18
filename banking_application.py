@@ -3,6 +3,7 @@ from CSV import *
 import pandas as pd
 from constants import *
 
+
 class Banking_Application:
 
     def __init__(self):
@@ -33,22 +34,20 @@ class Banking_Application:
 
     def __return_client_df_as_dict(self, **dataframe_input):
         try:
-            client_dict = {
-                "title": list(dataframe_input["Title"].values())[0],
-                "first_name": list(dataframe_input["Firstname"].values())[0],
-                "last_name": list(dataframe_input["Lastname"].values())[0],
-                "preferred_pronouns": list(dataframe_input["Pronouns"].values())[0],
-                "date_of_birth": list(dataframe_input["Date of Birth"].values())[0],
-                "occupation": list(dataframe_input["Occupation"].values())[0],
-                "account_balance": list(dataframe_input["Account Balance"].values())[0],
-                "overdraft_limit": list(dataframe_input["Overdraft Limit"].values())[0]
-            }
-            return client_dict
+            all_clients = []
+            client_dict = {}
+            for each_row in range(0, list(dataframe_input["Title"].values()).__len__()):
+                client_dict = {}
+                for key in dataframe_input:
+                    client_dict[key] = list(dataframe_input[key].values())[each_row]
+                all_clients.append(client_dict)
+            return all_clients
         except BaseException as err:
             print(f"ERROR: Could not return client dataframe as a dictionary:{type(err)}.")
 
-    '''Private method to return a client which is a dataframe as a dictionary. This is so that clients are presented in a cleaner way as opposed to a dictionary. 
-    In this method, the dataframe of the client is inputted as an attribute and returns the client in a cleaner form.'''
+    '''Private method to return a client which is a dataframe as a dictionary. This is so that clients are presented 
+    in a cleaner way as opposed to a dictionary. In this method, the dataframe of the client is inputted as an 
+    attribute and returns the client in a cleaner form. '''
 
     def retrieving_a_client(self, first_name, last_name, date_of_birth):
         try:
@@ -59,9 +58,9 @@ class Banking_Application:
             df = dataframe[
                 (dataframe.Firstname == first_name) &
                 (dataframe.Lastname == last_name) &
-                (dataframe["Date of Birth"] == date_of_birth)
+                (dataframe["Date_of_Birth"] == date_of_birth)
                 ]
-            client_obj = client_class(**self.__return_client_df_as_dict(**(df.to_dict())))
+            client_obj = client_class(**self.__return_client_df_as_dict(**(df.to_dict()))[0])
             return client_obj
         except BaseException as err:
             print(f"ERROR: Could not retrieve a client:{type(err)}.")
@@ -76,11 +75,11 @@ class Banking_Application:
     def searching_for_accounts_with_negative_balance(self):
         try:
             dataframe = self.__fetch_csv_dataframe()
-            df = dataframe[dataframe["Account Balance"] < 0]
+            df = dataframe[dataframe["Account_Balance"] < 0]
             if df.shape[0] == 0:
                 return None
             else:
-                return df.to_string()
+                return self.__return_client_df_as_dict(**(df.to_dict()))
         except BaseException as err:
             print(f"ERROR: Could not search for clients with negative balance:{type(err)}.")
 
@@ -95,9 +94,10 @@ class Banking_Application:
             if df.shape[0] == 0:
                 return None
             else:
-                return df.to_string()
+                return self.__return_client_df_as_dict(**(df.to_dict()))
         except BaseException as err:
-            print(f"ERROR: Could not search for clients with firstname",first_name, ":",{type(err)})
+            print(f"ERROR: Could not search for clients with firstname", first_name, ":", {type(err)})
+
     ''' This method compares the firstname passed in the parameter with all the available first names and returns all
     details of the clients as a dataframe.'''
 
@@ -109,9 +109,9 @@ class Banking_Application:
             if df.shape[0] == 0:
                 return None
             else:
-                return df.to_string()
+                return self.__return_client_df_as_dict(**(df.to_dict()))
         except BaseException as err:
-            print(f"ERROR: Could not search for clients with lastname",last_name, ":",{type(err)})
+            print(f"ERROR: Could not search for clients with lastname", last_name, ":", {type(err)})
 
     '''This method takes the CSV file as a dataframe by calling the fetch_csv_dataframe method from the CSV.py file. 
      Then the last name passed into the parameter is compared with all the lastnames in the lastname column in the 
@@ -121,13 +121,14 @@ class Banking_Application:
         try:
             assert isinstance(date_of_birth, str)
             dataframe = self.__fetch_csv_dataframe()
-            df = dataframe[(dataframe["Date of Birth"] == date_of_birth)]
+            df = dataframe[(dataframe["Date_of_Birth"] == date_of_birth)]
             if df.shape[0] == 0:
                 return None
             else:
-                return df.to_string()
+                return self.__return_client_df_as_dict(**(df.to_dict()))
         except BaseException as err:
-            print(f"ERROR: Could not search for clients with date of birth",date_of_birth, ":",{type(err)})
+            print(f"ERROR: Could not search for clients with date of birth", date_of_birth, ":", {type(err)})
+
     ''' This method searched for all clients with the same date of birth and prints at out as a dataframe.'''
 
     def deleting_a_client(self, first_name, last_name, date_of_birth):
@@ -136,10 +137,12 @@ class Banking_Application:
             assert isinstance(last_name, str)
             assert isinstance(date_of_birth, str)
             dataframe = self.__fetch_csv_dataframe()
-            dataframe.drop(dataframe[(dataframe["Firstname"] == first_name) & (dataframe["Lastname"] == last_name) & (dataframe["Date of Birth"] == date_of_birth)].index, inplace=True)
+            dataframe.drop(dataframe[(dataframe["Firstname"] == first_name) & (dataframe["Lastname"] == last_name) & (
+                        dataframe["Date_of_Birth"] == date_of_birth)].index, inplace=True)
             self.csv_class_obj.refresh_csv_file(dataframe)
         except BaseException as err:
-            print(f"ERROR: Could not delete client:",{type(err)})
+            print(f"ERROR: Could not delete client:", {type(err)})
+
     '''This method deletes a client by comparing first names, last names and date of birth with clients and removes the 
      a client who's details match with the passed parameters.'''
 
@@ -162,8 +165,8 @@ class Banking_Application:
             assert isinstance(new_overdraft_limit, int)
             dataframe = self.__fetch_csv_dataframe()
             for index, row in dataframe.iterrows():
-                if row['Firstname'] == first_name and row['Lastname'] == last_name and row['Date of Birth'] == date_of_birth:
-                    dataframe.at[index, 'Overdraft Limit'] = new_overdraft_limit
+                if row['Firstname'] == first_name and row['Lastname'] == last_name and row['Date_of_Birth'] == date_of_birth:
+                    dataframe.at[index, 'Overdraft_Limit'] = new_overdraft_limit
                     self.csv_class_obj.refresh_csv_file(dataframe)
         except BaseException as err:
             print(f"ERROR: Failed to change overdraft limits: {type(err)}")

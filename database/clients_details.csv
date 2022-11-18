@@ -1,4 +1,4 @@
-Title,Firstname,Lastname,Pronouns,Date of Birth,Occupation,Account Balance,Overdraft Limit
+Title,Firstname,Lastname,Pronouns,Date_of_Birth,Occupation,Account_Balance,Overdraft_Limit
 Dr,Ingaberg,Dragoe,she/her,08/06/1964,Quality Engineer,820166445,319963893
 Rev,Burl,Tordiffe,he/him,12/08/1971,Web Designer IV,772689759,66458856
 Honorable,Gennifer,Dallywater,she/her,10/08/1951,VP Marketing,848368340,988349577
@@ -68,10 +68,10 @@ Dr,Abelard,Andree,he/him,3/07/1961,Research Nurse,466947057,539544725
 Ms,Coralyn,Cardero,she/her,10/08/1970,Analyst Programmer,326093014,33548046
 Dr,Cindie,Oakland,she/her,11/09/1959,Financial Analyst,892818559,116396043
 Mr,Pauly,Groome,he/him,07/10/1955,Chemical Engineer,557832183,29492855
-Rev,Yule,Dach,he/him,10/09/1997,Structural Engineer,967059627,884731888
-Mrs,Catlee,Ayshford,she/her,08/01/1997,Research Associate,633176238,534806598
-Mrs,Loy,Brewis,he/him,7/01/1955,Environmental Specialist,72798015,939400254
-Dr,Tripp,Delamere,he/him,10/06/1963,Occupational Therapist,880727976,24833986
+Rev,Yule,Dach,he/him,10/09/1997,Structural Engineer,-967059627,884731888
+Mrs,Catlee,Ayshford,she/her,08/01/1997,Research Associate,-633176238,534806598
+Mrs,Loy,Brewis,he/him,7/01/1955,Environmental Specialist,-72798015,939400254
+Dr,Tripp,Delamere,he/him,10/06/1963,Occupational Therapist,-880727976,24833986
 Dr,Kippie,Kowal,she/her,02/11/1995,Technical Writer,446574792,533418
 Ms,Cornall,Nock,he/him,9/04/1974,Junior Executive,662669811,308525372
 Rev,Ruben,Mullaney,he/him,02/01/1966,Automation Specialist II,44633252,80551690
